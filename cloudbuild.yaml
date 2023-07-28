@@ -52,6 +52,8 @@ steps:
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
+  env:
+  - '_AWS_ACCESS_KEY_DEV=$_AWS_ACCESS_KEY_DEV'
   args: 
   - '-c'
   - | 
