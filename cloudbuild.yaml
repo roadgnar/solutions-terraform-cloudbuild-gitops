@@ -73,6 +73,7 @@ steps:
           cd ../../
         done
       fi 
+  secretEnv: ["AWS_ACCESS_KEY_DEV"]
 # [END tf-plan]
 
 # [START tf-apply]
