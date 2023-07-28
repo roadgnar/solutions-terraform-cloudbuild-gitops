@@ -52,8 +52,6 @@ steps:
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
-  env:
-  - '_AWS_ACCESS_KEY_DEV=$_AWS_ACCESS_KEY_DEV'
   args: 
   - '-c'
   - | 
@@ -69,13 +67,13 @@ steps:
           echo ""
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
-          echo "AWS_ACCESS_KEY_DEV: $_AWS_ACCESS_KEY_DEV"
+          echo "AWS_ACCESS_KEY_DEV: $$AWS_ACCESS_KEY_DEV"
           echo "*************************************************"
           terraform plan || exit 1
           cd ../../
         done
       fi 
-  secretEnv: ["_AWS_ACCESS_KEY_DEV"]
+  secretEnv: ["AWS_ACCESS_KEY_DEV"]
 # [END tf-plan]
 
 # [START tf-apply]
@@ -98,4 +96,4 @@ steps:
 availableSecrets:
   secretManager:
   - versionName: projects/$PROJECT_ID/secrets/ACCESS_KEY_DEV/versions/latest
-    env: _AWS_ACCESS_KEY_DEV
+    env: AWS_ACCESS_KEY_DEV
