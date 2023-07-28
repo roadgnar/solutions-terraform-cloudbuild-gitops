@@ -67,12 +67,13 @@ steps:
           echo ""
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
+          echo "AWS_ACCESS_KEY_DEV: $_AWS_ACCESS_KEY_DEV"
           echo "*************************************************"
           terraform plan || exit 1
           cd ../../
         done
       fi 
-  secretEnv: ["AWS_ACCESS_KEY_DEV"]
+  secretEnv: ["_AWS_ACCESS_KEY_DEV"]
 # [END tf-plan]
 
 # [START tf-apply]
