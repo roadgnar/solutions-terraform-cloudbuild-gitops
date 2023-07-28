@@ -68,7 +68,6 @@ steps:
           echo "*************** TERRAFOM PLAN ******************"
           echo "******* At environment: ${env} ********"
           echo "*************************************************"
-          echo "AWS_ACCESS_KEY_DEV: $AWS_ACCESS_KEY_DEV"
           terraform plan || exit 1
           cd ../../
         done
